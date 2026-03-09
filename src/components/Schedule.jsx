@@ -9,14 +9,14 @@ const Schedule = () => {
 
     {
       time: "10:00 AM",
-      title: "Hacking Begins + Problem Statement Release",
+      title: "Hacking Begins + Problem Statement Out",
       day: "Day 1",
       highlight: true,
     },
 
     { time: "12:00 PM", title: "Mentorship Round 1", day: "Day 1" },
 
-    { time: "01:00 PM - 02:00 PM", title: "Lunch Break", day: "Day 1" },
+    { time: "1:00 PM - 2:00 PM", title: "Food", day: "Day 1" },
 
     { time: "05:00 PM", title: "Tea Break", day: "Day 1" },
 
@@ -24,7 +24,7 @@ const Schedule = () => {
 
     { time: "09:00 PM", title: "Dinner", day: "Day 1" },
 
-    { time: "12:00 AM", title: "Midnight Snacks & Games", day: "Day 1" },
+    { time: "12:00 AM", title: "Midnight Snack & Games", day: "Day 1" },
 
     { time: "08:00 AM", title: "Breakfast", day: "Day 2" },
 
@@ -34,7 +34,7 @@ const Schedule = () => {
 
     {
       time: "01:00 PM",
-      title: "Closing Ceremony & Prize Distribution",
+      title: "Closing Ceremony & Prizes",
       day: "Day 2",
       highlight: true,
     },
