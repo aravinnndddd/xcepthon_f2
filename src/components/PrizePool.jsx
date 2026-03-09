@@ -16,11 +16,11 @@ const PrizePool = () => {
   const bg2Rotate = useTransform(scrollYProgress, [0, 1], [0, 180]);
 
   // Main Card Parallax
-  const leftCardY = useTransform(scrollYProgress, [0.1, 0.8], [150, 0]);
+  const leftCardY = useTransform(scrollYProgress, [0, 0.5], [60, 0]);
 
   // Right Stacked Cards Parallax
-  const rightCard1Y = useTransform(scrollYProgress, [0.2, 0.8], [200, 0]);
-  const rightCard2Y = useTransform(scrollYProgress, [0.3, 0.9], [250, 0]);
+  const rightCard1Y = useTransform(scrollYProgress, [0, 0.5], [60, 0]);
+  const rightCard2Y = useTransform(scrollYProgress, [0, 0.6], [60, 0]);
 
   return (
     <section
