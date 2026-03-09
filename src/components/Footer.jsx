@@ -2,6 +2,18 @@ import React from 'react';
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
+    const handleNavClick = (e, href) => {
+        e.preventDefault();
+        if (href === "#") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            return;
+        }
+        const target = document.querySelector(href);
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
     return (
         <footer className="bg-goku-indigo pt-16 pb-8 border-t border-white/10 relative overflow-hidden">
             {/* Decorative effect */}
@@ -29,10 +41,12 @@ const Footer = () => {
                     <div>
                         <h4 className="font-heading text-xl text-white mb-4 tracking-wide">Quick Links</h4>
                         <ul className="space-y-2 font-sans text-gray-400">
-                            <li><a href="#about" className="hover:text-goku-yellow transition-colors">About</a></li>
-                            <li><a href="#tracks" className="hover:text-goku-yellow transition-colors">Tracks</a></li>
-                            <li><a href="#schedule" className="hover:text-goku-yellow transition-colors">Schedule</a></li>
-                            <li><a href="#sponsors" className="hover:text-goku-yellow transition-colors">Sponsors</a></li>
+                            <li><a href="#about" onClick={(e) => handleNavClick(e, "#about")} className="hover:text-goku-yellow transition-colors">About</a></li>
+                            <li><a href="#tracks" onClick={(e) => handleNavClick(e, "#tracks")} className="hover:text-goku-yellow transition-colors">Tracks</a></li>
+                            <li><a href="#prizes" onClick={(e) => handleNavClick(e, "#prizes")} className="hover:text-goku-yellow transition-colors">Prizes</a></li>
+                            <li><a href="#schedule" onClick={(e) => handleNavClick(e, "#schedule")} className="hover:text-goku-yellow transition-colors">Schedule</a></li>
+                            <li><a href="#sponsors" onClick={(e) => handleNavClick(e, "#sponsors")} className="hover:text-goku-yellow transition-colors">Sponsors</a></li>
+                            <li><a href="#faq" onClick={(e) => handleNavClick(e, "#faq")} className="hover:text-goku-yellow transition-colors">FAQ</a></li>
                         </ul>
                     </div>
 
