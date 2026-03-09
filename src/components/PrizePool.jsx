@@ -50,7 +50,7 @@ const PrizePool = () => {
             className="relative lg:w-[260px] flex-shrink-0 z-20"
             initial={{ x: -300, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0 }}
             transition={{
               type: "spring",
               stiffness: 100,
