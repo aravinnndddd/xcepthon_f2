@@ -273,7 +273,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
           >
-            <a href="https://makemypass.com/event/hackathon-3">
+            <a href="https://makemypass.com/event/xcepthon">
               <button className="group relative px-6 py-3 md:px-8 md:py-4 bg-goku-indigo text-white font-heading text-lg md:text-xl tracking-widest skew-x-[-10deg] hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(69,47,122,0.4)]">
                 <div className="absolute inset-0 bg-white/10 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 mix-blend-overlay" />
                 <span className="block skew-x-[10deg] flex items-center gap-2">
