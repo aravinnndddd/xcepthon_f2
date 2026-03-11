@@ -34,7 +34,7 @@ const Sponsors = () => {
           className="mb-16"
         >
           <h2 className="font-heading text-5xl md:text-6xl text-white mb-4 uppercase">
-            Powered By <span className="text-goku-indigo">Titans</span>
+            Ticketing <span className="text-goku-indigo">Partner</span>
           </h2>
           <div className="h-1 w-24 bg-goku-indigo mx-auto"></div>
         </motion.div>
@@ -48,9 +48,9 @@ const Sponsors = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <h3 className="font-sans text-xl text-goku-indigo mb-8 uppercase tracking-[0.2em] font-bold">
+              {/* <h3 className="font-sans text-xl text-goku-indigo mb-8 uppercase tracking-[0.2em] font-bold">
                 {tier.name}
-              </h3>
+              </h3> */}
               <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
                 {tier.sponsors.map((src, i) => (
                   <div
