@@ -116,9 +116,11 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="pt-4 px-3">
-                <button className="w-full py-3 bg-goku-orange text-white font-accent tracking-widest text-sm shadow-[0_0_15px_rgba(255,122,0,0.5)]">
-                  REGISTER NOW
-                </button>
+                <a href="https://makemypass.com/event/hackathon-3">
+                  <button className="w-full py-3 border border-goku-indigo bg-goku-indigo/20 text-white hover:bg-goku-indigo font-accent tracking-widest text-sm transition-all duration-300 group overflow-hidden rounded-full">
+                    REGISTER NOW
+                  </button>
+                </a>
               </div>
             </div>
           </motion.div>
