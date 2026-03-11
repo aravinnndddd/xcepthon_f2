@@ -51,12 +51,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-0.5">
-              <div className="w-full h-full bg-goku-dark rounded-full flex items-center justify-center">
-                <span className="font-heading text-xl text-white">XC</span>
-              </div>
-            </div>
-            <span className="font-heading text-2xl tracking-wider text-white">
+            <span className="font-[shredded] text-2xl tracking-wider text-white">
               XCEPTHON
             </span>
           </div>

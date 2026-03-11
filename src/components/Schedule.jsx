@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Schedule = () => {
   const scheduleData = [
-    { time: "09:00 AM", title: "Check-in", day: "Day 1" },
+    { time: "8:30 AM", title: "Check-in", day: "Day 1" },
 
     { time: "09:30 AM", title: "Opening Ceremony", day: "Day 1" },
 
