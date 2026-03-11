@@ -75,10 +75,12 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
-            <button className="relative px-6 py-2 bg-goku-indigo/20 border border-goku-indigo text-white hover:bg-goku-indigo font-accent tracking-widest text-sm transition-all duration-300 group overflow-hidden rounded-full">
-              <span className="relative z-10">REGISTER NOW</span>
-              <div className="absolute inset-0 h-full w-full bg-goku-indigo transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 opacity-20"></div>
-            </button>
+            <a href="https://makemypass.com/event/hackathon-3">
+              <button className="relative px-6 py-2 bg-goku-indigo/20 border border-goku-indigo text-white hover:bg-goku-indigo font-accent tracking-widest text-sm transition-all duration-300 group overflow-hidden rounded-full">
+                <span className="relative z-10">REGISTER NOW</span>
+                <div className="absolute inset-0 h-full w-full bg-goku-indigo transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 opacity-20"></div>
+              </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
