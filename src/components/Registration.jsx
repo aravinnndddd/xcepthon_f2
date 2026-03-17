@@ -25,7 +25,7 @@ const milestones = [
     title: "Teams Shortlisted",
     desc: "Selected teams will be announced. Check your email — if you're in, it's time to go all out.",
     color: "from-[#11998e] to-[#38ef7d]",
-    done: false,
+    done: true,
   },
   {
     icon: <Rocket size={22} className="text-white" />,
