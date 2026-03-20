@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -14,17 +17,44 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (location.pathname !== "/" || !location.hash) {
+      return;
+    }
+
+    if (location.hash === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const target = document.querySelector(location.hash);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.pathname, location.hash]);
+
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setMobileMenuOpen(false);
     setTimeout(() => {
-      if (href === "#") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
-      }
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (href.startsWith("/")) {
+        // Route navigation
+        navigate(href);
+      } else if (href.startsWith("#")) {
+        if (location.pathname !== "/") {
+          navigate(href === "#" ? "/" : `/${href}`);
+          return;
+        }
+
+        if (href === "#") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     }, 300);
   };
@@ -38,6 +68,7 @@ const Navbar = () => {
     { name: "Prizes", href: "#prizes" },
     { name: "Schedule", href: "#schedule" },
     { name: "Sponsors", href: "#sponsors" },
+
     { name: "FAQ", href: "#faq" },
   ];
 
@@ -75,7 +106,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-3">
             <button className="relative px-6 py-2 bg-gray-500/20 border border-gray-500 text-gray-400 font-accent tracking-widest text-sm transition-all duration-300 overflow-hidden rounded-full cursor-not-allowed">
               <span className="relative z-10">REGISTRATION CLOSED</span>
             </button>
@@ -113,6 +144,13 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
+              <a
+                href="/admin"
+                onClick={(e) => handleNavClick(e, "/admin")}
+                className="block px-3 py-3 text-base font-sans font-medium text-goku-orange hover:text-goku-orange hover:bg-white/5 border-l-2 border-transparent hover:border-goku-orange transition-all cursor-pointer"
+              >
+                📋 Admin
+              </a>
               <div className="pt-4 px-3">
                 <button className="w-full py-3 border border-gray-500 bg-gray-500/20 text-gray-400 font-accent tracking-widest text-sm transition-all duration-300 overflow-hidden rounded-full cursor-not-allowed">
                   REGISTRATION CLOSED

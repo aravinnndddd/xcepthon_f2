@@ -1,44 +1,39 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+import { sagaTimelineDefault } from "../data/sagaTimeline";
 
 const Schedule = () => {
-  const scheduleData = [
-    { time: "8:30 AM", title: "Check-in", day: "Day 1" },
+  const [timelineOverrides, setTimelineOverrides] = useState({});
 
-    { time: "09:30 AM", title: "Opening Ceremony", day: "Day 1" },
+  useEffect(() => {
+    const fetchOverrides = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, "sagaTimeline"));
+        const overrides = snapshot.docs.reduce((acc, currentDoc) => {
+          acc[currentDoc.id] = currentDoc.data();
+          return acc;
+        }, {});
+        setTimelineOverrides(overrides);
+      } catch (error) {
+        console.error("Failed to fetch saga timeline overrides:", error);
+      }
+    };
 
-    {
-      time: "10:00 AM",
-      title: "Hacking Begins + Problem Statement Out",
-      day: "Day 1",
-      highlight: true,
-    },
+    fetchOverrides();
+  }, []);
 
-    { time: "12:00 PM", title: "Evaluation Round 1", day: "Day 1" },
-
-    { time: "1:00 PM - 2:00 PM", title: "Food", day: "Day 1" },
-
-    { time: "05:00 PM", title: "Tea Break", day: "Day 1" },
-
-    { time: "07:00 PM", title: "Evaluation Round 2", day: "Day 1" },
-
-    { time: "09:00 PM", title: "Dinner", day: "Day 1" },
-
-    { time: "12:00 AM", title: "Midnight Snack & Games", day: "Day 1" },
-
-    { time: "08:00 AM", title: "Breakfast", day: "Day 2" },
-
-    { time: "10:00 AM", title: "Hacking Ends", day: "Day 2", highlight: true },
-
-    { time: "10:00 AM", title: "Judging Commences", day: "Day 2" },
-
-    {
-      time: "01:00 PM",
-      title: "Closing Ceremony & Prizes",
-      day: "Day 2",
-      highlight: true,
-    },
-  ];
+  const scheduleData = useMemo(() => {
+    return sagaTimelineDefault.map((item) => {
+      const override = timelineOverrides[item.id] || {};
+      return {
+        ...item,
+        isOver:
+          typeof override.isOver === "boolean" ? override.isOver : item.isOver,
+      };
+    });
+  }, [timelineOverrides]);
 
   return (
     <section
@@ -71,7 +66,7 @@ const Schedule = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative flex items-center p-6 rounded-xl border ${item.highlight ? "bg-goku-yellow border-goku-yellow shadow-[0_0_20px_rgba(216,197,173,0.4)]" : "bg-goku-yellow/90 border-black/10"} backdrop-blur-sm`}
+              className={`relative flex items-center p-6 rounded-xl border ${item.colorClass} backdrop-blur-sm ${item.isOver ? "opacity-70" : ""}`}
             >
               <div className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 w-1 h-12 bg-goku-indigo rounded-r-md"></div>
 
@@ -89,11 +84,17 @@ const Schedule = () => {
                   </div>
                 </div>
 
-                {item.highlight && (
+                {(item.highlight || item.isOver) && (
                   <div className="shrink-0">
-                    <span className="inline-block px-3 py-1 bg-goku-indigo text-white text-xs font-bold uppercase rounded-full">
-                      Major Event
-                    </span>
+                    {item.isOver ? (
+                      <span className="inline-block px-3 py-1 bg-green-700 text-white text-xs font-bold uppercase rounded-full border border-white/20">
+                        Over
+                      </span>
+                    ) : item.highlight ? (
+                      <span className="inline-block px-3 py-1 bg-goku-indigo text-white text-xs font-bold uppercase rounded-full">
+                        Major Event
+                      </span>
+                    ) : null}
                   </div>
                 )}
               </div>
