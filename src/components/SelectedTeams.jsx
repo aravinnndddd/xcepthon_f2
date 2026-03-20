@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Users, Shield, Zap } from "lucide-react";
 
 const teams = [
-  "Hyphen", "CodeCrafters", "T-Rex", "K Factory", "SORA", "Algorix", 
+  "Hyphen", "CodeCrafters", "T-Rex", "K Factory", "Delta Automations", "Algorix", 
   "SPADEZZZ", "Tea Spillers", "Cypher", "X-CEPtionals", "Coding Ninjas", 
   "Null Byte", "Caffeine fueled Coderss", "Paapen", "NORTH WIND", "3BITS", 
   "Hive Minds"
