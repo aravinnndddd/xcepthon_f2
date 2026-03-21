@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Trash2, Loader2, LogOut, RefreshCw, Clock3, FileText } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Trash2, Loader2, LogOut, RefreshCw, Clock3 } from "lucide-react";
 import {
   collection,
   getDocs,
@@ -199,6 +199,13 @@ const AdminGallery = () => {
                 className={`w-5 h-5 ${isLoading ? "animate-spin" : ""}`}
               />
             </button>
+            <Link
+              to="/admin/submissions"
+              className="px-4 py-3 rounded-lg bg-goku-indigo/20 hover:bg-goku-indigo/30 border border-goku-indigo/50 flex items-center gap-2 transition"
+            >
+              <FileText className="w-4 h-4" />
+              <span className="text-sm font-medium">Submissions</span>
+            </Link>
             <button
               onClick={handleLogout}
               className="px-4 py-3 rounded-lg bg-goku-orange/20 hover:bg-goku-orange/30 border border-goku-orange/50 flex items-center gap-2 transition"

@@ -14,6 +14,7 @@ import CustomCursor from "./components/CustomCursor";
 import Gallery from "./components/Gallery";
 import AdminLogin from "./components/AdminLogin";
 import AdminGallery from "./components/AdminGallery";
+import AdminSubmissions from "./components/AdminSubmissions";
 import { AdminProvider } from "./context/AdminContext";
 
 function Home() {
@@ -45,6 +46,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/admin/gallery" element={<AdminGallery />} />
+            <Route path="/admin/submissions" element={<AdminSubmissions />} />
           </Routes>
         </div>
       </AdminProvider>
