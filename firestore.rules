@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.token.email))
+        && get(/databases/$(database)/documents/admins/$(request.auth.token.email)).data.enabled == true;
+    }
+
+    match /admins/{email} {
+      // Anyone signed in can read their own admin doc to check status
+      allow get: if isSignedIn() && request.auth.token.email == email;
+      // Admins can read and list all admin docs
+      allow read: if isAdmin();
+      // Only existing admin can manage admin docs
+      allow write: if isAdmin();
+    }
+
+    match /images/{imageId} {
+      allow read: if true;
+
+      allow create: if
+        request.resource.data.imageUrl is string &&
+        request.resource.data.imageUrl.matches('https://res.cloudinary.com/.*') &&
+        request.resource.data.userName is string &&
+        request.resource.data.fileName is string &&
+        request.resource.data.cloudinaryPublicId is string &&
+        request.resource.data.createdAt is timestamp;
+
+      // Only admin can delete gallery images
+      allow delete: if isAdmin();
+
+      allow update: if false;
+    }
+
+    match /sagaTimeline/{eventId} {
+      allow read: if true;
+      // Admin panel writes colorClass / isOver here
+      allow write: if isAdmin();
+    }
+
+    match /teamAbstracts/{teamId} {
+      allow read: if true;
+
+      allow create, update: if
+        request.resource.data.teamName is string &&
+        request.resource.data.problemId is int &&
+        request.resource.data.abstract is string &&
+        request.resource.data.abstract.size() >= 0 &&
+        request.resource.data.updatedAt is timestamp &&
+        request.resource.data.driveLink is string &&
+        (
+          request.resource.data.driveLink == "" ||
+          request.resource.data.driveLink.matches('https://(drive|docs)\\.google\\.com/.*')
+        );
+
+      allow delete: if isAdmin();
+    }
+  }
+}
