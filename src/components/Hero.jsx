@@ -5,6 +5,7 @@ import FloatingCloud from "./FloatingClouds";
 import FloatingRocket from "./FloatingRocket";
 import FloatingSatellite from "./FloatingSatellite";
 import FloatingPlane from "./FloatingPlane";
+import Countdown from "./countdown";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -65,6 +66,10 @@ const Hero = () => {
     [0, 0.7, 1],
     [1.18, 1.18, 1],
   );
+
+  const opacityHeroContent = useTransform(scrollYProgress, [0.65, 0.8], [1, 0]);
+  const opacityCountdown = useTransform(scrollYProgress, [0.78, 0.97], [0, 1]);
+  const yCountdown = useTransform(scrollYProgress, [0.78, 0.97], ["40px", "0px"]);
 
   return (
     <section ref={ref} className="relative min-h-[250vh] md:min-h-[500vh] w-full bg-goku-dark">
@@ -220,7 +225,7 @@ const Hero = () => {
 
         {/* FOREGROUND TEXT LAYER - INTERACTIVE */}
         <motion.div
-          style={{ y: yText }}
+          style={{ y: yText, opacity: opacityHeroContent }}
           className="absolute inset-0 z-10 flex flex-col items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 text-center pointer-events-auto"
         >
           <motion.div
@@ -292,6 +297,13 @@ const Hero = () => {
               </button>
             </a>
           </motion.div>
+        </motion.div>
+
+        {/* Countdown overlay — appears after mountains scroll down */}
+        <motion.div
+          style={{ opacity: opacityCountdown, y: yCountdown }}
+          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"        >
+          <Countdown sectionClassName="bg-transparent" />
         </motion.div>
       </div>
 

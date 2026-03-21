@@ -2,11 +2,46 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Users, Shield, Zap } from "lucide-react";
 
+const PROBLEM_STATEMENTS = {
+  1: {
+    title: "Automation to make Browsing better",
+    stream: "Productivity & Web Automation",
+    description: "Build agentic systems to automate everyday browsing tasks like searches, actions, and bookmark management."
+  },
+  2: {
+    title: "Multiplayer games for differently abled people",
+    stream: "Inclusive Gaming / Accessibility",
+    description: "Create multiplayer games tailored for differently abled users that ensure equal participation and fun."
+  },
+  3: {
+    title: "Build a system to detect fake reviews",
+    stream: "AI & Data Analytics",
+    description: "Develop intelligent systems to analyze and filter fake, AI-generated, or repeated reviews."
+  },
+  4: {
+    title: "Help creators better monetize and grow their audience",
+    stream: "Creator Economy / Digital Platforms",
+    description: "Design platforms that enable seamless content creation, management, and performance insights."
+  }
+};
+
 const teams = [
-  "Hyphen", "CodeCrafters", "T-Rex", "K Factory", "Delta Automations", "Algorix", 
-  "SPADEZZZ", "Tea Spillers", "Cypher", "X-CEPtionals", "Coding Ninjas", 
-  "Null Byte", "Caffeine fueled Coderss", "Paapen", "NORTH WIND", "3BITS", 
-  "Hive Minds"
+  { name: "Tea Spillers", problemId: 1 },
+  { name: "Delta Automations", problemId: 2 },
+  { name: "Null Byte", problemId: 4 },
+  { name: "Algorix", problemId: 1 },
+  { name: "T-Rex", problemId: 4 },
+  { name: "Cypher", problemId: 3 },
+  { name: "3BITS", problemId: 1 },
+  { name: "Hyphen", problemId: 1 },
+  { name: "Hive Minds", problemId: 3 },
+  { name: "NORTH WIND", problemId: 2 },
+  { name: "CodeCrafters", problemId: 1 },
+  { name: "K Factory", problemId: 3 },
+  { name: "X-CEPtionals", problemId: 2 },
+  { name: "SPADEZZZ", problemId: 3 },
+  { name: "Coding Ninjas", problemId: 4 },
+  { name: "Caffeine fueled Coderss", problemId: 3 }
 ];
 
 const SelectedTeams = () => {
@@ -65,31 +100,42 @@ const SelectedTeams = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {teams.map((team, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05, 
-              }}
-              className="bg-orange-600 p-6 flex items-center gap-4 group transition-all duration-300 rounded-2xl shadow-lg border border-orange-500/50"
-            >
-              <div className="w-12 h-12 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center">
-                <Shield size={20} className="text-white" />
-              </div>
-              <div>
-                <h3 className="font-heading text-xl text-white tracking-wide">{team}</h3>
-              </div>
-              <div className="ml-auto opacity-40">
-                <Users size={16} className="text-white" />
-              </div>
-            </motion.div>
-          ))}
-
-          {/* Special slot for the 18th if needed, or keeping it empty for 17 */}
-          {/* Since 17 is requested, we just map 17. The grid will handle the layout. */}
+          {teams.map((team, index) => {
+            const problem = PROBLEM_STATEMENTS[team.problemId];
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.02,
+                  y: -5
+                }}
+                className="bg-orange-600/90 backdrop-blur-sm p-6 flex flex-col gap-4 group transition-all duration-300 rounded-2xl shadow-lg border border-orange-400/30 hover:bg-orange-600 hover:border-orange-400/60"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-colors">
+                    <Shield size={22} className="text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-heading text-xl text-white tracking-wide truncate group-hover:text-yellow-200 transition-colors">{team.name}</h3>
+                    <div className="flex items-center gap-2 mt-1">
+                      <Users size={12} className="text-white/60" />
+                      <span className="text-white/60 text-[10px] uppercase tracking-wider font-medium">Qualified Fighter</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-2 pt-4 border-t border-white/10">
+                  <p className="text-white/50 text-[10px] uppercase tracking-widest mb-2 font-semibold">Problem Statement</p>
+                  <h4 className="text-white font-heading text-sm sm:text-base leading-snug group-hover:text-yellow-100 transition-colors">
+                    {problem.title}
+                  </h4>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
