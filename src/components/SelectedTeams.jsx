@@ -297,7 +297,7 @@ const SelectedTeams = () => {
   return (
     <section
       id="selected-teams"
-      className="py-24 bg-goku-dark relative overflow-hidden"
+      className="py-16 md:py-24 bg-goku-dark relative overflow-hidden"
     >
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -307,12 +307,12 @@ const SelectedTeams = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading text-5xl md:text-6xl text-white mb-4"
+            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4"
           >
             SELECTED <span className="text-yellow-400">TEAMS</span>
           </motion.h2>
@@ -353,7 +353,7 @@ const SelectedTeams = () => {
                   scale: 1.02,
                   y: -5,
                 }}
-                className="bg-orange-600/90 backdrop-blur-sm p-6 flex flex-col gap-4 group transition-all duration-300 rounded-2xl shadow-lg border border-orange-400/30 hover:bg-orange-600 hover:border-orange-400/60"
+                className="bg-orange-600/90 backdrop-blur-sm p-4 sm:p-6 flex flex-col gap-4 group transition-all duration-300 rounded-2xl shadow-lg border border-orange-400/30 hover:bg-orange-600 hover:border-orange-400/60"
               >
                 <div className="flex items-center gap-4">
                   <div className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 transition-colors ${
@@ -443,7 +443,7 @@ const SelectedTeams = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="w-full max-w-md rounded-2xl border border-white/20 bg-goku-dark p-5"
+              className="w-full max-w-md rounded-2xl border border-white/20 bg-goku-dark p-4 sm:p-5"
               onClick={(event) => event.stopPropagation()}
             >
               <h3 className="font-heading text-xl text-white">
@@ -498,7 +498,7 @@ const SelectedTeams = () => {
                 <p className="mt-3 text-xs text-red-200">{dialogError}</p>
               )}
 
-              <div className="mt-4 flex items-center gap-2">
+              <div className="mt-4 flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={saveDriveDialog}
