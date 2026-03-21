@@ -311,7 +311,8 @@ const SelectedTeams = () => {
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
             className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4"
           >
             SELECTED <span className="text-yellow-400">TEAMS</span>
@@ -319,7 +320,7 @@ const SelectedTeams = () => {
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 100 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             className="h-1 bg-gradient-to-r from-goku-orange to-transparent mx-auto"
           />
         </div>
@@ -328,7 +329,7 @@ const SelectedTeams = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05, margin: "-50px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {teams.map((team, index) => {
@@ -349,10 +350,8 @@ const SelectedTeams = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{
-                  scale: 1.02,
-                  y: -5,
-                }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                whileTap={{ scale: 0.98 }}
                 className="bg-orange-600/90 backdrop-blur-sm p-4 sm:p-6 flex flex-col gap-4 group transition-all duration-300 rounded-2xl shadow-lg border border-orange-400/30 hover:bg-orange-600 hover:border-orange-400/60"
               >
                 <div className="flex items-center gap-4">
