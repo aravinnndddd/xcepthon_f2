@@ -356,7 +356,11 @@ const SelectedTeams = () => {
                 className="bg-orange-600/90 backdrop-blur-sm p-6 flex flex-col gap-4 group transition-all duration-300 rounded-2xl shadow-lg border border-orange-400/30 hover:bg-orange-600 hover:border-orange-400/60"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-colors">
+                  <div className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 transition-colors ${
+                    currentDriveLink.trim()
+                      ? "bg-green-700 border-green-500/50"
+                      : "bg-white/20 border-white/30 group-hover:bg-white/30"
+                  }`}>
                     <Shield size={22} className="text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
