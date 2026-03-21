@@ -26,29 +26,29 @@ const PrizePool = () => {
     <section
       id="prizes"
       ref={sectionRef}
-      className="py-24 bg-goku-dark relative overflow-hidden"
+      className="py-16 md:py-24 bg-goku-dark relative overflow-hidden"
     >
       {/* Background ambient scroll-linked glows */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           style={{ y: bg1Y }}
-          className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-goku-orange/10 blur-[120px]"
+          className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full bg-goku-orange/10 blur-[80px] md:blur-[120px]"
         />
         <motion.div
           style={{ y: bg2Y, rotate: bg2Rotate }}
-          className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-cyan-500/8 blur-[120px]"
+          className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[250px] md:w-[400px] h-[250px] md:h-[400px] rounded-full bg-cyan-500/8 blur-[80px] md:blur-[120px]"
         />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* ── LAYOUT: mirrors the reference — tall left card | center heading | right grid ── */}
-        <div className="flex flex-col lg:flex-row gap-6 items-stretch min-h-[520px]">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-6 items-stretch min-h-[auto] lg:min-h-[520px]">
           {/* ── LEFT: Total Prize Pool Card (Now with Goku Push) ─────────────────────────── */}
           <motion.div
             style={{ y: leftCardY }}
             className="relative lg:w-[260px] flex-shrink-0 z-20"
-            initial={{ x: -300, opacity: 0 }}
+            initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0 }}
             transition={{
@@ -74,7 +74,7 @@ const PrizePool = () => {
             />
 
             {/* Your EXACT original left card, now inside the animated wrapper */}
-            <div className="relative rounded-3xl overflow-hidden flex flex-col justify-between p-8 min-h-[480px] w-full h-full">
+            <div className="relative rounded-3xl overflow-hidden flex flex-col justify-between p-8 min-h-[400px] md:min-h-[480px] w-full h-full">
               {/* dynamic inline style merged with fixed tailwind background */}
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -100,35 +100,35 @@ const PrizePool = () => {
 
               {/* Top label */}
               <div className="relative z-10">
-                <p className="font-sans text-xs text-white/70 tracking-[0.2em] uppercase border border-white/20 rounded-full px-3 py-1 inline-block mb-2">
+                <p className="font-sans text-[10px] md:text-xs text-white/70 tracking-[0.2em] uppercase border border-white/20 rounded-full px-3 py-1 inline-block mb-2">
                   Total Prize Pool
                 </p>
               </div>
 
               {/* Big number */}
-              <div className="relative z-10 my-auto py-8">
+              <div className="relative z-10 my-auto py-6 md:py-8">
                 <motion.p
                   style={{
                     scale: useTransform(scrollYProgress, [0.3, 0.7], [0.8, 1]),
                   }}
-                  className="font-heading text-7xl text-white leading-none"
+                  className="font-heading text-6xl md:text-7xl text-white leading-none"
                   initial={{ textShadow: "0 0 0px rgba(255,255,255,0)" }}
                   animate={{ textShadow: "0 0 40px rgba(255,255,255,0.4)" }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   ₹30K
                 </motion.p>
-                <p className="font-sans text-sm text-white/60 mt-2 tracking-widest">
+                <p className="font-sans text-xs md:text-sm text-white/60 mt-2 tracking-widest">
                   prizes in total
                 </p>
               </div>
 
               {/* Branding bottom */}
               <div className="relative z-10 flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
                   <Zap size={14} className="text-white" />
                 </div>
-                <span className="font-heading text-white text-lg tracking-widest">
+                <span className="font-heading text-white text-base md:text-lg tracking-widest">
                   XCEPTHON <span className="text-white/60">'26</span>
                 </span>
               </div>
@@ -136,26 +136,26 @@ const PrizePool = () => {
           </motion.div>
 
           {/* ── CENTER: Heading ──────────────────────────────────────── */}
-          <div className="flex-1 flex flex-col justify-center lg:px-8 text-center lg:text-left">
+          <div className="flex-1 flex flex-col justify-center lg:px-8 text-center lg:text-left py-4 lg:py-0">
             <motion.div
               style={{
                 opacity: useTransform(scrollYProgress, [0.1, 0.5], [0, 1]),
                 y: useTransform(scrollYProgress, [0.1, 0.5], [50, 0]),
               }}
             >
-              <p className="font-accent text-goku-orange tracking-[0.3em] uppercase text-sm mb-3">
+              <p className="font-accent text-goku-orange tracking-[0.3em] uppercase text-xs md:text-sm mb-3">
                 Battle Rewards
               </p>
               <h2
                 className="font-heading leading-tight text-white"
-                style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
+                style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)" }}
               >
                 Meet Our
                 <br />
                 <span className=" text-yellow-400 ">Prize Pool</span>
               </h2>
               <div className="mt-4 h-1 w-20 bg-gradient-to-r from-goku-orange to-transparent lg:mx-0 mx-auto" />
-              <p className="mt-5 text-gray-400 font-sans text-base max-w-sm lg:mx-0 mx-auto">
+              <p className="mt-5 text-gray-400 font-sans text-sm md:text-base max-w-sm lg:mx-0 mx-auto px-4 lg:px-0">
                 Push beyond your limits. The top fighters walk away with serious
                 rewards.
               </p>

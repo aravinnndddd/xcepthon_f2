@@ -49,27 +49,27 @@ const Tracks = () => {
   ];
 
   return (
-    <section id="tracks" className="py-24 bg-goku-dark relative">
+    <section id="tracks" className="py-16 md:py-24 bg-goku-dark relative">
       {/* Heading */}
-      <div className="text-center mb-16">
+      <div className="text-center mb-10 md:mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-heading text-5xl md:text-6xl text-white mb-4 uppercase"
+          className="font-heading text-4xl md:text-6xl text-white mb-4 uppercase"
         >
           Choose Your <span className="text-goku-indigo">Domain</span>
         </motion.h2>
 
-        <div className="h-1 w-24 bg-goku-yellow mx-auto mb-6"></div>
+        <div className="h-1 w-20 md:w-24 bg-goku-yellow mx-auto mb-6"></div>
 
-        <p className="text-gray-400 font-sans max-w-2xl mx-auto">
+        <p className="text-gray-400 font-sans max-w-2xl mx-auto text-base md:text-lg px-2">
           Pick a track, assemble your squad, and build a project that challenges
           the status quo.
         </p>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tracks.map((track, index) => (
             <motion.div
               key={index}
@@ -83,22 +83,24 @@ const Tracks = () => {
                 className={`absolute inset-0 bg-gradient-to-br ${track.color} rounded-2xl opacity-70 blur-sm group-hover:opacity-100 transition-opacity duration-300`}
               />
 
-              <div className="relative h-full bg-goku-indigo rounded-2xl p-8 border border-white/20 flex flex-col">
+              <div className="relative h-full bg-goku-indigo rounded-2xl p-6 md:p-8 border border-white/20 flex flex-col">
                 <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${track.color} p-0.5 mb-6`}
+                  className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${track.color} p-0.5 mb-5 md:mb-6`}
                 >
                   <div className="w-full h-full bg-goku-indigo rounded-[14px] flex items-center justify-center">
-                    {track.icon}
+                    <div className="scale-75 md:scale-100">
+                      {track.icon}
+                    </div>
                   </div>
                 </div>
 
-                <h3 className="font-heading text-2xl text-white mb-3">
+                <h3 className="font-heading text-xl md:text-2xl text-white mb-3">
                   {track.title}
                 </h3>
 
                 <motion.div
                   layout
-                  className="text-gray-400 text-sm leading-relaxed"
+                  className="text-gray-400 text-xs md:text-sm leading-relaxed"
                 >
                   <AnimatePresence mode="wait">
                     {expanded[index] ? (

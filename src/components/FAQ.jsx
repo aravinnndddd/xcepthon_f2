@@ -26,18 +26,18 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-goku-dark relative">
+    <section id="faq" className="py-16 md:py-24 bg-goku-dark relative">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading text-5xl md:text-6xl text-white mb-4 uppercase"
+            className="font-heading text-4xl md:text-6xl text-white mb-4 uppercase"
           >
             Intel & <span className="text-gray-400">Queries</span>
           </motion.h2>
-          <div className="h-1 w-24 bg-goku-yellow mx-auto"></div>
+          <div className="h-1 w-20 md:w-24 bg-goku-yellow mx-auto"></div>
         </div>
 
         <div className="space-y-4">
