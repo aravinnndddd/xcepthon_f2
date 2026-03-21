@@ -38,22 +38,22 @@ const Schedule = () => {
   return (
     <section
       id="schedule"
-      className="py-24 bg-goku-dark relative overflow-hidden"
+      className="py-16 md:py-24 bg-goku-dark relative overflow-hidden"
     >
       {/* Decorative aura */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-goku-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-goku-yellow/10 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="font-heading text-5xl md:text-6xl text-white mb-4 uppercase"
+            className="font-heading text-4xl md:text-6xl text-white mb-4 uppercase"
           >
             The <span className="text-goku-yellow text-glow-yellow">Saga</span>
           </motion.h2>
-          <p className="text-gray-400 font-sans tracking-widest uppercase text-sm">
+          <p className="text-gray-400 font-sans tracking-widest uppercase text-xs md:text-sm">
             Follow the timeline of battle
           </p>
         </div>

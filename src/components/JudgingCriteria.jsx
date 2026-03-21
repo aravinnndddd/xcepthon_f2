@@ -56,18 +56,18 @@ const JudgingCriteria = () => {
   ];
 
   return (
-    <section id="judging" className="py-24 bg-goku-dark relative overflow-hidden">
+    <section id="judging" className="py-16 md:py-24 bg-goku-dark relative overflow-hidden">
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-goku-indigo/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-goku-orange/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-goku-indigo/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-goku-orange/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading text-5xl md:text-6xl text-white mb-4 uppercase"
+            className="font-heading text-4xl md:text-6xl text-white mb-4 uppercase"
           >
             Judging <span className="text-goku-indigo">Criteria</span>
           </motion.h2>
@@ -77,16 +77,16 @@ const JudgingCriteria = () => {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="h-1 w-24 bg-goku-yellow mx-auto mb-6 origin-left"
+            className="h-1 w-20 md:w-24 bg-goku-yellow mx-auto mb-6 origin-left"
           />
 
-          <p className="text-gray-400 font-sans max-w-2xl mx-auto text-lg">
+          <p className="text-gray-400 font-sans max-w-2xl mx-auto text-base md:text-lg px-2">
             Our judges evaluate projects based on these six pillars of excellence
             to identify the most impactful and innovative solutions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {criteria.map((item, index) => (
             <motion.div
               key={index}
@@ -102,21 +102,23 @@ const JudgingCriteria = () => {
                 className={`absolute -inset-0.5 bg-gradient-to-r ${item.color} rounded-2xl opacity-10 group-hover:opacity-40 blur transition duration-500`}
               />
 
-              <div className="relative bg-[#251b4d] bg-opacity-60 backdrop-blur-xl border border-white/10 p-8 rounded-2xl h-full flex flex-col justify-between transition-all duration-300 group-hover:border-white/20">
+              <div className="relative bg-[#251b4d] bg-opacity-60 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl h-full flex flex-col justify-between transition-all duration-300 group-hover:border-white/20">
                 <div>
                   <div
-                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} p-0.5 mb-6 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br ${item.color} p-0.5 mb-5 md:mb-6 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-300`}
                   >
                     <div className="w-full h-full bg-[#1a1435] rounded-[10px] flex items-center justify-center">
-                      {item.icon}
+                      <div className="scale-75 md:scale-100">
+                        {item.icon}
+                      </div>
                     </div>
                   </div>
 
-                  <h3 className="font-heading text-2xl text-white mb-4 group-hover:text-goku-yellow transition-colors duration-300 tracking-wide uppercase">
+                  <h3 className="font-heading text-xl md:text-2xl text-white mb-3 md:mb-4 group-hover:text-goku-yellow transition-colors duration-300 tracking-wide uppercase">
                     {item.title}
                   </h3>
 
-                  <p className="text-gray-400 font-sans leading-relaxed">
+                  <p className="text-gray-400 font-sans text-sm md:text-base leading-relaxed">
                     {item.description}
                   </p>
                 </div>
