@@ -10,6 +10,7 @@ import FAQ from "./components/FAQ";
 import Sponsors from "./components/Sponsors";
 import Footer from "./components/Footer";
 import PrizePool from "./components/PrizePool";
+import JudgingCriteria from "./components/JudgingCriteria";
 import CustomCursor from "./components/CustomCursor";
 import Gallery from "./components/Gallery";
 import AdminLogin from "./components/AdminLogin";
@@ -24,6 +25,7 @@ function Home() {
       <About />
       <Tracks />
       <Registration />
+      <JudgingCriteria />
       <SelectedTeams />
       <PrizePool />
       <Schedule />
