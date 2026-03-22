@@ -12,6 +12,19 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/admins/$(request.auth.token.email)).data.enabled == true;
     }
 
+    function isValidWinnerSlot(slot) {
+      return slot is map
+        && slot.team is string
+        && slot.members is string;
+    }
+
+    function isValidWinnersConfig(data) {
+      return data.enabled is bool
+        && isValidWinnerSlot(data.winner1)
+        && isValidWinnerSlot(data.winner2)
+        && isValidWinnerSlot(data.winner3);
+    }
+
     match /admins/{email} {
       // Anyone signed in can read their own admin doc to check status
       allow get: if isSignedIn() && request.auth.token.email == email;
@@ -60,6 +73,15 @@ service cloud.firestore {
         );
 
       allow delete: if isAdmin();
+    }
+
+    match /winners/{docId} {
+      allow read: if true;
+      // Public site reads winners, admin panel writes only to winners/results
+      allow create, update: if isAdmin()
+        && docId == "results"
+        && isValidWinnersConfig(request.resource.data);
+      allow delete: if isAdmin() && docId == "results";
     }
   }
 }

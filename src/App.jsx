@@ -6,6 +6,7 @@ import Schedule from "./components/Schedule";
 import Tracks from "./components/Tracks";
 import Registration from "./components/Registration";
 import SelectedTeams from "./components/SelectedTeams";
+import Winners from "./components/Winners";
 import FAQ from "./components/FAQ";
 import Sponsors from "./components/Sponsors";
 import Footer from "./components/Footer";
@@ -16,6 +17,7 @@ import Gallery from "./components/Gallery";
 import AdminLogin from "./components/AdminLogin";
 import AdminGallery from "./components/AdminGallery";
 import AdminSubmissions from "./components/AdminSubmissions";
+import AdminWinners from "./components/AdminWinners";
 import { AdminProvider } from "./context/AdminContext";
 
 function Home() {
@@ -27,6 +29,7 @@ function Home() {
       <Registration />
       <JudgingCriteria />
       <SelectedTeams />
+      <Winners />
       <PrizePool />
       <Schedule />
       <Sponsors />
@@ -49,6 +52,8 @@ function App() {
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/admin/gallery" element={<AdminGallery />} />
             <Route path="/admin/submissions" element={<AdminSubmissions />} />
+            <Route path="/admin/winners" element={<AdminWinners />} />
+            <Route path="/admin/winner" element={<AdminWinners />} />
           </Routes>
         </div>
       </AdminProvider>

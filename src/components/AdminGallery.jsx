@@ -1,5 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Trash2, Loader2, LogOut, RefreshCw, Clock3, FileText } from "lucide-react";
+import {
+  Trash2,
+  Loader2,
+  LogOut,
+  RefreshCw,
+  Clock3,
+  FileText,
+  Trophy,
+} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -205,6 +213,13 @@ const AdminGallery = () => {
             >
               <FileText className="w-4 h-4" />
               <span className="text-sm font-medium">Submissions</span>
+            </Link>
+            <Link
+              to="/admin/winners"
+              className="px-4 py-3 rounded-lg bg-yellow-500/20 hover:bg-yellow-500/30 border border-yellow-400/50 flex items-center gap-2 transition"
+            >
+              <Trophy className="w-4 h-4" />
+              <span className="text-sm font-medium">Winners</span>
             </Link>
             <button
               onClick={handleLogout}

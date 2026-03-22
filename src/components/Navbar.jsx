@@ -68,7 +68,7 @@ const Navbar = () => {
     { name: "Prizes", href: "#prizes" },
     { name: "Schedule", href: "#schedule" },
     { name: "Sponsors", href: "#sponsors" },
-
+    { name: "Winners", href: "#winners" },
     { name: "FAQ", href: "#faq" },
   ];
 
