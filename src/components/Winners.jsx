@@ -37,7 +37,7 @@ const podiumConfig = [
   },
 ];
 
-const Winners = () => {
+const Winners = ({ forceVisible = false }) => {
   const [winners, setWinners] = useState(fallbackWinners);
   const [loading, setLoading] = useState(true);
   const [isPublicEnabled, setIsPublicEnabled] = useState(false);
@@ -105,6 +105,8 @@ const Winners = () => {
     return unlockedRanks.includes(rank);
   };
 
+  const shouldShowWinners = hasWinnersData && (isPublicEnabled || forceVisible);
+
   return (
     <section
       id="winners"
@@ -131,7 +133,7 @@ const Winners = () => {
             Celebrating the top three teams on the final podium.
           </p>
 
-          {!loading && isPublicEnabled && hasWinnersData && (
+          {!loading && shouldShowWinners && (
             <div className="mt-5 flex items-center justify-center gap-3">
               <button
                 type="button"
@@ -156,7 +158,7 @@ const Winners = () => {
           </div>
         ) : (
           <>
-            {!isPublicEnabled || !hasWinnersData ? (
+            {!shouldShowWinners ? (
               <div className="max-w-2xl mx-auto rounded-2xl border border-white/20 bg-white/5 backdrop-blur-sm px-6 py-8 text-center">
                 <p className="text-white text-lg sm:text-xl font-heading tracking-wide">
                   Winners will be announced soon

@@ -185,7 +185,7 @@ const AdminWinners = () => {
             >
               <div className="flex items-center gap-3 mb-2">
                 <Link
-                  to="/admin/submissions"
+                  to="/admin/winners"
                   className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition text-white/70 hover:text-white border border-white/10"
                 >
                   <ArrowLeft size={18} />

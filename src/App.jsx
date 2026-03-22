@@ -18,6 +18,7 @@ import AdminLogin from "./components/AdminLogin";
 import AdminGallery from "./components/AdminGallery";
 import AdminSubmissions from "./components/AdminSubmissions";
 import AdminWinners from "./components/AdminWinners";
+import AdminWinnersPreview from "./components/AdminWinnersPreview";
 import { AdminProvider } from "./context/AdminContext";
 
 function Home() {
@@ -52,8 +53,9 @@ function App() {
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/admin/gallery" element={<AdminGallery />} />
             <Route path="/admin/submissions" element={<AdminSubmissions />} />
-            <Route path="/admin/winners" element={<AdminWinners />} />
-            <Route path="/admin/winner" element={<AdminWinners />} />
+            <Route path="/admin/winners" element={<AdminWinnersPreview />} />
+            <Route path="/admin/addwinners" element={<AdminWinners />} />
+            <Route path="/admin/winner" element={<AdminWinnersPreview />} />
           </Routes>
         </div>
       </AdminProvider>
