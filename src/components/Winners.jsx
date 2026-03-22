@@ -178,7 +178,13 @@ const Winners = ({ forceVisible = false }) => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-30px" }}
                       transition={{ duration: 0.35, delay: index * 0.08 }}
-                      className="relative"
+                      className={`relative ${
+                        slot.rank === 1
+                          ? "order-1 md:order-2"
+                          : slot.rank === 2
+                            ? "order-2 md:order-1"
+                            : "order-3"
+                      }`}
                     >
                       <motion.div
                         className="relative mb-3 text-center"
