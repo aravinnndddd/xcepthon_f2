@@ -46,7 +46,7 @@ const Countdown = ({ sectionClassName = "bg-goku-dark" }) => {
     <section className={`relative w-full ${sectionClassName} py-20 md:py-28 overflow-hidden`}>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -56,7 +56,7 @@ const Countdown = ({ sectionClassName = "bg-goku-dark" }) => {
           <span className="text-sm font-sans text-white tracking-widest uppercase font-bold">
             Hacking Ends In
           </span>
-        </motion.div>
+        </motion.div> */}
 
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
@@ -67,8 +67,7 @@ const Countdown = ({ sectionClassName = "bg-goku-dark" }) => {
         >
           {time.done && (
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-goku-yellow to-[#B8A58D]">
-              XCEPTHON IS LIVE!
-            </span>
+              Hacking Ended   </span>
           )}
         </motion.h2>
 
@@ -86,7 +85,7 @@ const Countdown = ({ sectionClassName = "bg-goku-dark" }) => {
             animate={{ opacity: 1 }}
             className="font-accent text-xl md:text-2xl text-goku-yellow tracking-widest uppercase"
           >
-            The hackathon has begun. Build something exceptional.
+            Hacking complete. Impact begins
           </motion.p>
         )}
       </div>
