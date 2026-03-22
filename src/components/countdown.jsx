@@ -67,7 +67,7 @@ const Countdown = ({ sectionClassName = "bg-goku-dark" }) => {
         >
           {time.done && (
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-goku-yellow to-[#B8A58D]">
-              Hacking Ended   </span>
+              XCEPTHON ENDED  </span>
           )}
         </motion.h2>
 
