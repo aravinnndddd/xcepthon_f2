@@ -42,10 +42,6 @@ const Winners = ({ forceVisible = false }) => {
   const [loading, setLoading] = useState(true);
   const [isPublicEnabled, setIsPublicEnabled] = useState(false);
   const [hasWinnersData, setHasWinnersData] = useState(false);
-  const [revealStep, setRevealStep] = useState(0);
-
-  const revealRankByStep = [3, 2, 1];
-  const ordinalByRank = { 1: "1st", 2: "2nd", 3: "3rd" };
 
   useEffect(() => {
     const fetchWinners = async () => {
@@ -92,19 +88,6 @@ const Winners = ({ forceVisible = false }) => {
     fetchWinners();
   }, []);
 
-  const handleRevealClick = () => {
-    setRevealStep((prev) => Math.min(prev + 1, revealRankByStep.length));
-  };
-
-  const getIsRankRevealed = (rank) => {
-    if (revealStep <= 0) {
-      return false;
-    }
-
-    const unlockedRanks = revealRankByStep.slice(0, revealStep);
-    return unlockedRanks.includes(rank);
-  };
-
   const shouldShowWinners = hasWinnersData && (isPublicEnabled || forceVisible);
 
   return (
@@ -132,24 +115,6 @@ const Winners = ({ forceVisible = false }) => {
           <p className="text-white/70 text-sm sm:text-base max-w-2xl mx-auto">
             Celebrating the top three teams on the final podium.
           </p>
-
-          {!loading && shouldShowWinners && (
-            <div className="mt-5 flex items-center justify-center gap-3">
-              <button
-                type="button"
-                onClick={handleRevealClick}
-                disabled={revealStep >= revealRankByStep.length}
-                className="rounded-xl border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition-all hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {revealStep >= revealRankByStep.length
-                  ? "All Winners Revealed"
-                  : `Reveal ${ordinalByRank[revealRankByStep[revealStep]]} Champion`}
-              </button>
-              <span className="text-xs text-white/55">
-                Click sequence: 3rd then 2nd then 1st
-              </span>
-            </div>
-          )}
         </div>
 
         {loading ? (
@@ -169,7 +134,7 @@ const Winners = ({ forceVisible = false }) => {
                 {podiumConfig.map((slot, index) => {
                   const winner = winners[slot.id] || fallbackWinners[slot.id];
                   const isFirst = slot.rank === 1;
-                  const isRevealed = getIsRankRevealed(slot.rank);
+                  const isRevealed = true;
 
                   return (
                     <motion.article
@@ -270,9 +235,7 @@ const Winners = ({ forceVisible = false }) => {
                       </div>
 
                       <p className="text-center text-xs text-white/65 mt-3 px-2 line-clamp-2">
-                        {isRevealed
-                          ? winner.members || "Members will be announced soon"
-                          : "Click reveal to unlock"}
+                        {winner.members || "Members will be announced soon"}
                       </p>
                     </motion.article>
                   );
